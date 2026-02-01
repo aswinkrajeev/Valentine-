@@ -127,12 +127,69 @@
   </style>
 </head>
 
-<body>
+<body>#nameReveal {
+  font-size: 48px;
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: scale(0.6);
+  animation: revealName 2s ease forwards;
+  animation-delay: 0.8s;
+}
+
+@keyframes revealName {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.name {
+  position: relative;
+}
+
+/* Sparkles */
+.name::before,
+.name::after {
+  content: "✨";
+  position: absolute;
+  font-size: 20px;
+  opacity: 0;
+  animation: sparkle 2s ease forwards;
+}
+
+.name::before {
+  left: -35px;
+  top: 0;
+  animation-delay: 1.4s;
+}
+
+.name::after {
+  right: -35px;
+  top: 10px;
+  animation-delay: 1.7s;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
 
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
 <div class="container">
-  <h1>Hey Molu ❤️</h1>
+<h1 id="nameReveal">
+  <span class="name">Hey Molu ❤️</span>
+</h1>
   <p id="typeText"></p>
   <h2>Molu, will you be my Valentine? 💌</h2>
 
